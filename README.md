@@ -15,8 +15,10 @@ src/
 ├── scrapers/
 │   ├── icapital_scraper.py # Main scraper implementation
 │   └── job_scraper.py      # Job extraction logic
-└── utils/
-    └── navigation.py       # Page navigation and filtering utilities
+├── utils/
+│    └── navigation.py      # Page navigation and filtering utilities
+└── interfaces/
+     └── scraper.py         # Scraper interface for all scrapers
 ```
 
 ## Features
