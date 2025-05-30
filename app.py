@@ -1,13 +1,16 @@
 import logging
-from datetime import datetime
+import os
 from src.scrapers.icapital_scraper import ICapitalJobScraper
 
-# Configure logging,
+# Create logs directory if it doesn't exist
+os.makedirs('logs', exist_ok=True)
+
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(f'logs/job_scraper_{datetime.now().strftime("%Y_%m_%d_%H_%M")}.log'),
+        logging.FileHandler('logs/job_scraper.log'),
         logging.StreamHandler()
     ],
 )
@@ -25,10 +28,16 @@ def main():
     }
 
     try:
+        logger.info("Starting job scraper")
         scraper = ICapitalJobScraper(config)
         results = scraper.scrape()
-        with open(f'output/results_icapital_jobs_{datetime.now().strftime("%Y_%m_%d_%H_%M")}.json', 'w') as f:
+        
+        # Ensure output directory exists
+        os.makedirs('output', exist_ok=True)
+        
+        with open('output/results.json', 'w') as f:
             f.write(results)
+        logger.info("Results written to output/results.json")
         print(results)
     except Exception as e:
         logger.error(f"Application error: {e}")

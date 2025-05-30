@@ -5,7 +5,8 @@ services:
     build: .
     volumes:
       - ./output:/app/output
+      - ./logs:/app/logs
     environment:
       - PYTHONUNBUFFERED=1
     command: >
-      sh -c "python app.py > /app/output/results.json" 
+      sh -c "mkdir -p /app/logs && python app.py 2>&1 | tee /app/logs/job_scraper.log" 
