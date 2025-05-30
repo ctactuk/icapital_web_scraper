@@ -75,6 +75,8 @@ def scrape_icapital_jobs():
 if __name__ == "__main__":
     try:
         results = scrape_icapital_jobs()
+        with open('output/results.json', 'w') as f:
+            f.write(results)
         print(results)
     except Exception as e:
         print(f"Application error: {e}")

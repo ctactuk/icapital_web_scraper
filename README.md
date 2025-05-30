@@ -2,6 +2,8 @@
 
 A Python-based web scraper for extracting job listings from iCapital's careers page. The scraper uses Playwright for browser automation and provides structured job data in JSON format.
 
+Inside this project you will see file proof_of_concept.py where you can find my first approach.
+
 ## Project Structure
 
 ```
@@ -37,8 +39,8 @@ src/
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd icapital_test
+git clone git@github.com:ctactuk/icapital_web_scraper.git
+cd icapital_web_scraper
 ```
 
 2. Install dependencies:
@@ -56,7 +58,7 @@ playwright install-deps
 
 1. Build the Docker image:
 ```bash
-docker build -t icapital-scraper .
+docker compose up -d --build
 ```
 
 ## Usage

@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from typing import Dict, Any, List
 import json
 import logging
@@ -5,10 +6,11 @@ from src.browser.browser_manager import PlaywrightBrowserManager
 from src.utils.navigation import PageNavigator, FilterManager
 from src.scrapers.job_scraper import JobScraper, JobDataExporter
 from src.models.job_listing import JobListing
+from src.interfaces.scraper import IScraper
 
 logger = logging.getLogger(__name__)
 
-class ICapitalJobScraper:
+class ICapitalJobScraper(IScraper):
     """Main scraper class"""
     def __init__(self, config: Dict[str, Any]):
         self.config = config

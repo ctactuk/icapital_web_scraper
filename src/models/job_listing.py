@@ -9,7 +9,6 @@ class JobListing:
     role_description: str
 
     def to_dict(self) -> Dict[str, str]:
-        """Convert job listing to dictionary format"""
         return {
             "position_title": self.position_title,
             "location": self.location,
