@@ -8,19 +8,19 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Copy requirements first to leverage Docker cache
+# Copy requirements to the container
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install Playwright and its dependencies
+# Install Playwright chromium browser and its dependencies
 RUN playwright install chromium
 RUN playwright install-deps
 
-# Copy the entire project structure
+# Copy the entire project structure to the container
 COPY src/ src/
 COPY app.py .
 
-# Set PYTHONPATH to include the src directory
+# Set PYTHONPATH to include the src directory for the container
 ENV PYTHONPATH=/app
 
 CMD ["python", "app.py"] 
