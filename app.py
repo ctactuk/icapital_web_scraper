@@ -1,5 +1,6 @@
 import logging
 import os
+from datetime import datetime
 from src.scrapers.icapital_scraper import ICapitalJobScraper
 
 # Create logs directory if it doesn't exist
@@ -35,9 +36,9 @@ def main():
         # Ensure output directory exists
         os.makedirs('output', exist_ok=True)
         
-        with open('output/results.json', 'w') as f:
+        with open(f'output/results_icapital_jobs_{datetime.now().strftime("%Y_%m_%d_%H_%M")}.json', 'w') as f:
             f.write(results)
-        logger.info("Results written to output/results.json")
+        logger.info(f'Results written to output/results_icapital_jobs_{datetime.now().strftime("%Y_%m_%d_%H_%M")}.json')
         print(results)
     except Exception as e:
         logger.error(f"Application error: {e}")
