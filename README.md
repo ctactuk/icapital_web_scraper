@@ -94,7 +94,7 @@ config = {
 
 ## Output
 
-The scraper outputs job listings in JSON format with the following structure:
+The scraper outputs job listings in JSON format with the following structure inside folder output in json file:
 
 ```json
 [

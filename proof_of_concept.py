@@ -2,6 +2,7 @@ from playwright.sync_api import sync_playwright
 import json
 import sys
 from abc import ABC, abstractmethod
+from datetime import datetime
 
 page_url = 'https://icapital.com/careers'
 department_filter = "All Departments"
@@ -75,7 +76,7 @@ def scrape_icapital_jobs():
 if __name__ == "__main__":
     try:
         results = scrape_icapital_jobs()
-        with open('output/results.json', 'w') as f:
+        with open(f'output/results_icapital_jobs_{datetime.now().strftime("%Y_%m_%d_%H_%M")}.json', 'w') as f:
             f.write(results)
         print(results)
     except Exception as e:

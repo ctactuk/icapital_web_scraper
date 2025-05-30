@@ -2,12 +2,12 @@ import logging
 from datetime import datetime
 from src.scrapers.icapital_scraper import ICapitalJobScraper
 
-# Configure logging
+# Configure logging,
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(f'job_scraper.log'),
+        logging.FileHandler(f'logs/job_scraper_{datetime.now().strftime("%Y_%m_%d_%H_%M")}.log'),
         logging.StreamHandler()
     ],
 )
@@ -27,7 +27,7 @@ def main():
     try:
         scraper = ICapitalJobScraper(config)
         results = scraper.scrape()
-        with open('output/results.json', 'w') as f:
+        with open(f'output/results_icapital_jobs_{datetime.now().strftime("%Y_%m_%d_%H_%M")}.json', 'w') as f:
             f.write(results)
         print(results)
     except Exception as e:
