@@ -110,7 +110,7 @@ The scraper outputs job listings in JSON format with the following structure ins
 
 Logs are written to both:
 - Console output
-- `job_scraper.log` file
+- `logs/job_scraper.log` file
 
 ## Development
 
